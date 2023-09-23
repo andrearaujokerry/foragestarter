@@ -1,6 +1,4 @@
-from datetime import datetime
-
-from battery import Battery
+from fleet.battery import Battery
 
 
 class SpindlerBattery(Battery):
@@ -10,4 +8,5 @@ class SpindlerBattery(Battery):
         self.current_date = current_date
 
     def needs_service(self):
-        return self.current_date - self.last_service_date >= 730
+        difference = self.current_date - self.last_service_date
+        return difference.days > 730
