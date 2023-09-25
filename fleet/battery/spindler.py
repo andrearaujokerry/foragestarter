@@ -1,9 +1,7 @@
-from datetime import datetime
-
-from fleet.battery import Battery
+from fleet.battery.battery import Battery
 
 
-class NubbinBattery(Battery):
+class SpindlerBattery(Battery):
     def __init__(self, last_service_date, current_date):
         super().__init__()
         self.last_service_date = last_service_date
@@ -11,4 +9,4 @@ class NubbinBattery(Battery):
 
     def needs_service(self):
         difference = self.current_date - self.last_service_date
-        return difference.days > 1460
+        return difference.days > 1095

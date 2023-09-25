@@ -3,13 +3,12 @@ from fleet.serviceable import Serviceable
 
 
 class Car(Serviceable):
-    def __init__(self, engine, battery):
+    def __init__(self, engine, battery, tires):
         super().__init__()
         self.engine = engine
         self.battery = battery
+        self.tires = tires
 
     "Returns true if a car object needs service, false if not"
     def needs_service(self):
-        if self.engine.needs_service() or self.battery.needs_service():
-            return True
-        return False
+        return self.engine.needs_service() or self.battery.needs_service() or self.tires.needs_service()
